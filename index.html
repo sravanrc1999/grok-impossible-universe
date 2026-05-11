@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌌 Grok Impossible Universe | Built by Grok</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --space-bg: #0a0a0f;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .title-font {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+        }
+
+        .space-bg {
+            background: radial-gradient(circle at 50% 30%, #1a1a2e 0%, #0a0a0f 70%);
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #fff;
+            animation: twinkle 3s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        .planet {
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .planet:hover {
+            transform: scale(1.15) rotate(8deg);
+            box-shadow: 0 0 60px rgba(147, 197, 253, 0.6);
+        }
+
+        .section-header {
+            font-size: 2.25rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #e0f2fe, #bae6fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .neon-text {
+            text-shadow: 0 0 20px #67e8f9;
+        }
+
+        .cosmic-btn {
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .cosmic-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgb(103 232 249 / 0.3), 0 8px 10px -6px rgb(103 232 249 / 0.3);
+        }
+
+        .modal {
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .planet-glow {
+            box-shadow: 0 0 40px currentColor;
+        }
+    </style>
+</head>
+<body class="bg-[#0a0a0f] text-white overflow-x-hidden">
+    <!-- Navbar -->
+    <nav class="border-b border-white/10 bg-black/60 backdrop-blur-xl fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-cyan-400 to-violet-500 flex items-center justify-center">
+                    <i class="fa-solid fa-rocket text-white text-2xl"></i>
+                </div>
+                <div>
+                    <span class="font-bold text-3xl tracking-tighter title-font">GROK</span>
+                    <span class="text-cyan-400 text-sm font-mono tracking-[3px] ml-1">IMPOSSIBLE</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-x-4">
+                <div class="hidden md:flex items-center gap-x-2 px-4 py-1.5 rounded-3xl bg-white/5 text-sm">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    <span class="text-emerald-400 font-medium">LIVE • Built by Grok</span>
+                </div>
+                <a href="https://github.com/sravanrc1999/grok-impossible-universe" target="_blank"
+                   class="flex items-center gap-x-2 px-5 py-2.5 rounded-3xl border border-white/20 hover:bg-white/5 transition-colors text-sm font-medium">
+                    <i class="fa-brands fa-github"></i>
+                    <span>View on GitHub</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="pt-20 pb-16 px-6 max-w-5xl mx-auto text-center relative">
+        <div class="absolute inset-0 bg-[radial-gradient(#334155_0.8px,transparent_1px)] bg-[length:4px_4px] opacity-30"></div>
+        
+        <div class="inline-flex items-center gap-x-2 px-4 py-1 rounded-3xl bg-white/5 mb-6">
+            <span class="text-xs uppercase tracking-[2px] font-mono text-cyan-400">MAY 11, 2026</span>
+        </div>
+        
+        <h1 class="text-7xl md:text-8xl font-bold tracking-tighter title-font mb-6">
+            THE UNIVERSE<br>IS YOURS
+        </h1>
+        <p class="max-w-2xl mx-auto text-2xl text-slate-300 mb-10">
+            A breathtaking interactive experience<br>built live by <span class="font-semibold text-cyan-400">Grok</span> for a GitHub noob.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button onclick="document.getElementById('solar-system').scrollIntoView({ behavior: 'smooth' })" 
+                    class="cosmic-btn px-10 py-4 rounded-3xl bg-white text-black font-semibold flex items-center justify-center gap-x-3 text-lg hover:bg-white">
+                <span>Explore the Solar System</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button onclick="document.getElementById('chat').scrollIntoView({ behavior: 'smooth' })"
+                    class="cosmic-btn px-8 py-4 rounded-3xl border border-white/30 hover:bg-white/5 flex items-center justify-center gap-x-3 text-lg">
+                <i class="fa-solid fa-robot"></i>
+                <span>Chat with Grok</span>
+            </button>
+        </div>
+        
+        <div class="mt-12 flex justify-center">
+            <div class="flex items-center gap-x-8 text-sm text-slate-400">
+                <div class="flex items-center gap-x-2">
+                    <i class="fa-solid fa-check text-emerald-400"></i>
+                    <span>Zero setup</span>
+                </div>
+                <div class="flex items-center gap-x-2">
+                    <i class="fa-solid fa-check text-emerald-400"></i>
+                    <span>Works offline</span>
+                </div>
+                <div class="flex items-center gap-x-2">
+                    <i class="fa-solid fa-check text-emerald-400"></i>
+                    <span>100% Grok-powered</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animated Starfield Canvas -->
+    <div class="relative h-[420px] -mt-8 mb-8">
+        <canvas id="starfield" class="absolute inset-0 w-full h-full"></canvas>
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center">
+                <div class="text-[120px] opacity-10">🌌</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Solar System Section -->
+    <div id="solar-system" class="max-w-6xl mx-auto px-6 pb-24">
+        <div class="text-center mb-16">
+            <div class="inline-block px-5 py-1.5 rounded-3xl bg-white/5 text-cyan-400 text-sm font-mono tracking-widest mb-4">OUR NEIGHBORHOOD</div>
+            <h2 class="section-header">Click Any Planet</h2>
+            <p class="text-xl text-slate-400 mt-3 max-w-md mx-auto">Each one has real facts + direct Grok chat integration</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            <!-- Planets -->
+            <div onclick="showPlanetModal('mercury')" class="planet glass rounded-3xl p-6 flex flex-col items-center group">
+                <div class="w-20 h-20 rounded-full bg-gradient-to-br from-orange-300 to-amber-500 mb-5 flex items-center justify-center text-4xl shadow-[0_0_60px_#f59e0b]">☿</div>
+                <div class="font-semibold text-xl">Mercury</div>
+                <div class="text-xs text-orange-400 font-mono">FASTEST ORBIT</div>
+            </div>
+
+            <div onclick="showPlanetModal('venus')" class="planet glass rounded-3xl p-6 flex flex-col items-center group">
+                <div class="w-20 h-20 rounded-full bg-gradient-to-br from-yellow-300 to-rose-400 mb-5 flex items-center justify-center text-4xl shadow-[0_0_60px_#f43f5e]">♀</div>
+                <div class="font-semibold text-xl">Venus</div>
+                <div class="text-xs text-rose-400 font-mono">HOTTEST PLANET</div>
+            </div>
+
+            <div onclick="showPlanetModal('earth')" class="planet glass rounded-3xl p-6 flex flex-col items-center group border border-cyan-400/50">
+                <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-400 to-emerald-400 mb-5 flex items-center justify-center text-4xl shadow-[0_0_70px_#22d3ee]">🪐</div>
+                <div class="font-semibold text-xl">Earth</div>
+                <div class="text-xs text-cyan-400 font-mono">OUR HOME</div>
+            </div>
+
+            <div onclick="showPlanetModal('mars')" class="planet glass rounded-3xl p-6 flex flex-col items-center group">
+                <div class="w-20 h-20 rounded-full bg-gradient-to-br from-red-400 to-orange-500 mb-5 flex items-center justify-center text-4xl shadow-[0_0_60px_#f87171]">♂</div>
+                <div class="font-semibold text-xl">Mars</div>
+                <div class="text-xs text-red-400 font-mono">THE RED PLANET</div>
+            </div>
+
+            <div onclick="showPlanetModal('jupiter')" class="planet glass rounded-3xl p-6 flex flex-col items-center group">
+                <div class="w-24 h-24 rounded-full bg-gradient-to-br from-amber-300 to-yellow-600 mb-5 flex items-center justify-center text-5xl shadow-[0_0_80px_#fbbf24]">♃</div>
+                <div class="font-semibold text-xl">Jupiter</div>
+                <div class="text-xs text-amber-400 font-mono">LARGEST PLANET</div>
+            </div>
+
+            <div onclick="showPlanetModal('saturn')" class="planet glass rounded-3xl p-6 flex flex-col items-center group">
+                <div class="w-24 h-24 rounded-full bg-gradient-to-br from-yellow-200 to-amber-300 mb-5 flex items-center justify-center text-5xl shadow-[0_0_80px_#fde047] relative">
+                    ♄
+                    <div class="absolute w-28 h-3 bg-gradient-to-r from-transparent via-yellow-300 to-transparent rotate-[20deg] top-1/2 -translate-y-1/2 opacity-70"></div>
+                </div>
+                <div class="font-semibold text-xl">Saturn</div>
+                <div class="text-xs text-yellow-400 font-mono">RINGS OF ICE</div>
+            </div>
+
+            <div onclick="showPlanetModal('uranus')" class="planet glass rounded-3xl p-6 flex flex-col items-center group">
+                <div class="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-300 to-teal-400 mb-5 flex items-center justify-center text-4xl shadow-[0_0_60px_#67e8f9]">♅</div>
+                <div class="font-semibold text-xl">Uranus</div>
+                <div class="text-xs text-cyan-400 font-mono">ICIEST GIANT</div>
+            </div>
+
+            <div onclick="showPlanetModal('neptune')" class="planet glass rounded-3xl p-6 flex flex-col items-center group">
+                <div class="w-20 h-20 rounded-full bg-gradient-to-br from-indigo-400 to-blue-600 mb-5 flex items-center justify-center text-4xl shadow-[0_0_60px_#6366f1]">♆</div>
+                <div class="font-semibold text-xl">Neptune</div>
+                <div class="text-xs text-indigo-400 font-mono">WINDIEST</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grok Chat Section -->
+    <div id="chat" class="max-w-3xl mx-auto px-6 pb-24">
+        <div class="glass rounded-3xl p-10">
+            <div class="flex items-center gap-x-4 mb-8">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center">
+                    <i class="fa-solid fa-robot text-white text-3xl"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-3xl">Ask Grok About Space</div>
+                    <div class="text-emerald-400 text-sm font-mono">POWERED BY GROK • INSTANT ANSWERS</div>
+                </div>
+            </div>
+
+            <div id="chat-messages" class="h-[320px] overflow-y-auto mb-6 pr-2 space-y-4 text-sm">
+                <!-- Messages populated by JS -->
+            </div>
+
+            <div class="flex gap-3">
+                <input id="chat-input" type="text" placeholder="Ask anything... (e.g. How hot is the Sun?)" 
+                       class="flex-1 bg-white/5 border border-white/20 focus:border-cyan-400 rounded-3xl px-6 py-4 text-white placeholder:text-white/40 outline-none"
+                       onkeypress="if (event.key === 'Enter') sendChatMessage()">
+                <button onclick="sendChatMessage()" 
+                        class="px-8 py-4 bg-white text-black font-semibold rounded-3xl flex items-center gap-x-2 cosmic-btn">
+                    <span>Send</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="text-center mt-4 text-[10px] text-white/40">This is a local simulator. Real Grok API integration coming soon — just ask me!</div>
+        </div>
+    </div>
+
+    <!-- Mission Log -->
+    <div class="max-w-4xl mx-auto px-6 pb-20">
+        <div class="flex items-end justify-between mb-8">
+            <div>
+                <div class="text-cyan-400 text-sm font-mono tracking-widest">YOUR LEGACY</div>
+                <h3 class="text-4xl font-bold tracking-tight">Mission Log</h3>
+            </div>
+            <button onclick="addMission()" class="cosmic-btn px-6 py-3 rounded-3xl bg-white/10 hover:bg-white/15 flex items-center gap-x-2 text-sm font-medium">
+                <i class="fa-solid fa-plus"></i>
+                <span>Log New Mission</span>
+            </button>
+        </div>
+
+        <div id="mission-list" class="space-y-3">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+
+    <!-- Footer Stats -->
+    <div class="border-t border-white/10 py-16 bg-black/40">
+        <div class="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-5xl font-bold text-white mb-1" id="planet-count">8</div>
+                <div class="text-sm text-white/60">PLANETS EXPLORED</div>
+            </div>
+            <div>
+                <div class="text-5xl font-bold text-white mb-1" id="chat-count">127</div>
+                <div class="text-sm text-white/60">QUESTIONS ASKED TO GROK</div>
+            </div>
+            <div>
+                <div class="text-5xl font-bold text-white mb-1" id="mission-count">42</div>
+                <div class="text-sm text-white/60">MISSIONS LOGGED</div>
+            </div>
+            <div>
+                <div class="text-5xl font-bold text-white mb-1">∞</div>
+                <div class="text-sm text-white/60">POSSIBILITIES WITH GROK</div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-12 text-xs text-white/40">
+        Built entirely by <span class="font-semibold text-white">Grok</span> • May 11, 2026 • This is your repo now. Go make it legendary.
+    </footer>
+
+    <!-- Planet Modal -->
+    <div id="planet-modal" onclick="if (event.target.id === 'planet-modal') hidePlanetModal()" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-[100]">
+        <div onclick="event.stopImmediatePropagation()" class="glass max-w-md w-full mx-4 rounded-3xl p-9 modal">
+            <div class="flex justify-between items-start mb-6">
+                <div id="modal-planet-icon" class="text-7xl"></div>
+                <button onclick="hidePlanetModal()" class="text-white/60 hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            
+            <div id="modal-planet-name" class="text-5xl font-bold tracking-tighter mb-2"></div>
+            <div id="modal-planet-subtitle" class="text-cyan-400 font-mono text-sm tracking-[3px] mb-6"></div>
+            
+            <div id="modal-planet-fact" class="text-lg leading-relaxed text-slate-200 mb-8"></div>
+            
+            <div class="flex gap-3">
+                <button onclick="askGrokAboutCurrentPlanet()" 
+                        class="flex-1 cosmic-btn py-4 rounded-3xl bg-gradient-to-r from-violet-500 to-fuchsia-500 font-semibold flex items-center justify-center gap-x-3">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>Ask Grok About This</span>
+                </button>
+                <button onclick="hidePlanetModal()" 
+                        class="px-8 py-4 rounded-3xl border border-white/30 hover:bg-white/5">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent', '#67e8f9');
+        }
+
+        // Starfield Animation
+        function createStarfield() {
+            const canvas = document.getElementById('starfield');
+            const ctx = canvas.getContext('2d');
+            
+            function resize() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            let stars = [];
+            for (let i = 0; i < 280; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2.2 + 0.6,
+                    speed: Math.random() * 0.6 + 0.2
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#ffffff';
+                
+                stars.forEach(star => {
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // Gentle twinkle
+                    if (Math.random() < 0.03) {
+                        ctx.fillStyle = '#bae6fd';
+                        ctx.fill();
+                        ctx.fillStyle = '#ffffff';
+                    }
+                });
+
+                // Move stars slowly
+                stars.forEach(star => {
+                    star.y += star.speed;
+                    if (star.y > canvas.height) {
+                        star.y = 0;
+                        star.x = Math.random() * canvas.width;
+                    }
+                });
+
+                requestAnimationFrame(draw);
+            }
+            draw();
+        }
+
+        // Planet Data
+        const planetData = {
+            mercury: {
+                name: "Mercury",
+                icon: "☿",
+                subtitle: "FASTEST ORBIT • 88 EARTH DAYS",
+                fact: "Mercury is the smallest planet and the closest to the Sun. A day on Mercury lasts 59 Earth days, but a year is just 88 days. It has extreme temperatures: 800°F (427°C) during the day and -290°F (-179°C) at night.",
+                color: "#f59e0b"
+            },
+            venus: {
+                name: "Venus",
+                icon: "♀",
+                subtitle: "HOTTEST PLANET • 900°F SURFACE",
+                fact: "Venus spins backwards compared to most planets and has the hottest surface temperature in the solar system. Its thick atmosphere traps heat like a runaway greenhouse effect. It rains sulfuric acid.",
+                color: "#f43f5e"
+            },
+            earth: {
+                name: "Earth",
+                icon: "🪐",
+                subtitle: "OUR HOME • ONLY PLANET WITH LIFE",
+                fact: "Earth is the only planet known to harbor life. 71% of its surface is covered in water. It has the perfect distance from the Sun for liquid water to exist — the Goldilocks zone.",
+                color: "#22d3ee"
+            },
+            mars: {
+                name: "Mars",
+                icon: "♂",
+                subtitle: "THE RED PLANET • 2 MOONS",
+                fact: "Mars has the tallest mountain in the solar system — Olympus Mons (3x taller than Everest). It also has the longest canyon: Valles Marineris. Scientists believe it once had rivers and lakes.",
+                color: "#f87171"
+            },
+            jupiter: {
+                name: "Jupiter",
+                icon: "♃",
+                subtitle: "LARGEST PLANET • 79 MOONS",
+                fact: "Jupiter is a gas giant with a mass 318 times that of Earth. Its Great Red Spot is a massive storm that has raged for at least 400 years. It has the strongest magnetic field of any planet.",
+                color: "#fbbf24"
+            },
+            saturn: {
+                name: "Saturn",
+                icon: "♄",
+                subtitle: "RINGS OF ICE &amp; ROCK • 146 MOONS",
+                fact: "Saturn's rings are made mostly of water ice and rock. They are only about 30 feet thick in some places but span 175,000 miles. The planet is the least dense — it would float in water.",
+                color: "#fde047"
+            },
+            uranus: {
+                name: "Uranus",
+                icon: "♅",
+                subtitle: "ICIEST GIANT • 27 MOONS",
+                fact: "Uranus rotates on its side (98° tilt). It was the first planet discovered with a telescope. It has faint rings and is the coldest planetary atmosphere in the solar system (-371°F).",
+                color: "#67e8f9"
+            },
+            neptune: {
+                name: "Neptune",
+                icon: "♆",
+                subtitle: "WINDIEST PLANET • 14 MOONS",
+                fact: "Neptune has supersonic winds reaching 1,500 mph — the fastest in the solar system. It was mathematically predicted before it was observed. Its blue color comes from methane in the atmosphere.",
+                color: "#6366f1"
+            }
+        };
+
+        let currentPlanet = null;
+
+        function showPlanetModal(planetKey) {
+            const data = planetData[planetKey];
+            if (!data) return;
+
+            currentPlanet = planetKey;
+
+            document.getElementById('modal-planet-icon').innerHTML = data.icon;
+            document.getElementById('modal-planet-icon').style.color = data.color;
+            document.getElementById('modal-planet-name').innerText = data.name;
+            document.getElementById('modal-planet-subtitle').innerText = data.subtitle;
+            document.getElementById('modal-planet-fact').innerText = data.fact;
+
+            document.getElementById('planet-modal').classList.remove('hidden');
+            document.getElementById('planet-modal').classList.add('flex');
+        }
+
+        function hidePlanetModal() {
+            const modal = document.getElementById('planet-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        function askGrokAboutCurrentPlanet() {
+            hidePlanetModal();
+            const data = planetData[currentPlanet];
+            const chatInput = document.getElementById('chat-input');
+            
+            document.getElementById('chat').scrollIntoView({ behavior: 'smooth' });
+            
+            setTimeout(() => {
+                chatInput.value = `Tell me more about ${data.name}`;
+                sendChatMessage();
+            }, 800);
+        }
+
+        // Grok Chat Simulator
+        const grokResponses = {
+            default: [
+                "That's a fascinating question about the cosmos! The universe is far stranger and more beautiful than we can imagine.",
+                "In my training data, I learned that space is mostly empty... but what isn't empty is absolutely magical.",
+                "Great question! Did you know that there are more trees on Earth than there are stars in the Milky Way? Mind-blowing, right?",
+                "The universe is 13.8 billion years old. We've only been looking at it properly for about 400 years. We're still babies in cosmic terms."
+            ],
+            sun: "The Sun is a G-type main-sequence star. It's about 4.6 billion years old and will continue burning for another 5 billion years before becoming a red giant.",
+            blackhole: "Black holes are regions where gravity is so strong that nothing, not even light, can escape. The one at the center of our galaxy (Sagittarius A*) has a mass of 4 million suns!",
+            mars: "Mars is the most likely planet for future human colonization. NASA and SpaceX are actively planning missions. The biggest challenge? Radiation and dust storms.",
+            jupiter: "Jupiter's moon Europa is one of the most promising places to look for extraterrestrial life. It has a subsurface ocean twice the volume of all Earth's oceans combined!"
+        };
+
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const messagesContainer = document.getElementById('chat-messages');
+            const value = input.value.trim();
+            if (!value) return;
+
+            // User message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'flex justify-end';
+            userMsg.innerHTML = `
+                <div class="max-w-[75%] bg-white text-black px-5 py-3 rounded-3xl rounded-br-none">
+                    <div class="font-medium">You</div>
+                    <div>${value}</div>
+                </div>
+            `;
+            messagesContainer.appendChild(userMsg);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            input.value = '';
+
+            // Grok thinking + response
+            setTimeout(() => {
+                let responseText = grokResponses.default[Math.floor(Math.random() * grokResponses.default.length)];
+
+                const lower = value.toLowerCase();
+                if (lower.includes('sun') || lower.includes('solar')) responseText = grokResponses.sun;
+                else if (lower.includes('black hole') || lower.includes('blackhole')) responseText = grokResponses.blackhole;
+                else if (lower.includes('mars')) responseText = grokResponses.mars;
+                else if (lower.includes('jupiter') || lower.includes('europa')) responseText = grokResponses.jupiter;
+                else if (lower.includes('how') && lower.includes('big')) responseText = "The observable universe is about 93 billion light-years across. That's 93 billion years of light travel time!";
+
+                const grokMsg = document.createElement('div');
+                grokMsg.className = 'flex justify-start';
+                grokMsg.innerHTML = `
+                    <div class="max-w-[75%] bg-gradient-to-br from-violet-500/90 to-fuchsia-500/90 px-5 py-3.5 rounded-3xl rounded-bl-none">
+                        <div class="flex items-center gap-x-2 mb-1">
+                            <i class="fa-solid fa-robot text-white/90"></i>
+                            <span class="font-semibold text-white">Grok</span>
+                        </div>
+                        <div class="text-white">${responseText}</div>
+                    </div>
+                `;
+                messagesContainer.appendChild(grokMsg);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 650);
+        }
+
+        // Mission Log
+        let missions = [];
+
+        function loadMissions() {
+            const saved = localStorage.getItem('grokMissions');
+            if (saved) {
+                missions = JSON.parse(saved);
+            } else {
+                // Seed a couple cool missions
+                missions = [
+                    { id: Date.now() - 100000, title: "First human on Mars", date: "2035", notes: "Elon said we'd do it by 2030s. I'm in!" },
+                    { id: Date.now() - 50000, title: "Visit Europa's subsurface ocean", date: "2048", notes: "Looking for alien life" }
+                ];
+                saveMissions();
+            }
+            renderMissions();
+        }
+
+        function saveMissions() {
+            localStorage.setItem('grokMissions', JSON.stringify(missions));
+        }
+
+        function renderMissions() {
+            const container = document.getElementById('mission-list');
+            container.innerHTML = '';
+
+            if (missions.length === 0) {
+                container.innerHTML = `<div class="text-center py-8 text-white/50">No missions logged yet. Be the first explorer!</div>`;
+                return;
+            }
+
+            missions.forEach((mission, index) => {
+                const div = document.createElement('div');
+                div.className = 'glass rounded-3xl px-6 py-5 flex items-start gap-4 group';
+                div.innerHTML = `
+                    <div class="flex-1">
+                        <div class="flex items-center gap-x-3">
+                            <div class="font-semibold text-xl">${mission.title}</div>
+                            <div class="text-xs px-3 py-0.5 rounded-2xl bg-white/10 font-mono self-start mt-1">${mission.date}</div>
+                        </div>
+                        <div class="text-white/70 mt-1.5 text-[15px]">${mission.notes}</div>
+                    </div>
+                    <button onclick="deleteMission(${index})" class="opacity-0 group-hover:opacity-100 text-red-400 hover:text-red-500 transition-all mt-1">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                `;
+                container.appendChild(div);
+            });
+
+            // Update stats
+            document.getElementById('mission-count').innerText = missions.length;
+        }
+
+        function addMission() {
+            const title = prompt("Mission name (e.g. 'Colonize Titan'):");
+            if (!title) return;
+            
+            const date = prompt("Target year (e.g. 2042):", "20" + (30 + Math.floor(Math.random() * 20)));
+            const notes = prompt("Any notes or details?", "This will change humanity forever.");
+
+            const newMission = {
+                id: Date.now(),
+                title: title,
+                date: date || "TBD",
+                notes: notes || "No additional notes"
+            };
+
+            missions.unshift(newMission);
+            saveMissions();
+            renderMissions();
+        }
+
+        function deleteMission(index) {
+            if (!confirm("Delete this mission?")) return;
+            missions.splice(index, 1);
+            saveMissions();
+            renderMissions();
+        }
+
+        // Initialize everything
+        function initializeApp() {
+            initializeTailwind();
+            createStarfield();
+            loadMissions();
+
+            // Seed initial chat message
+            const chatContainer = document.getElementById('chat-messages');
+            chatContainer.innerHTML = `
+                <div class="flex justify-start">
+                    <div class="max-w-[75%] bg-gradient-to-br from-violet-500/90 to-fuchsia-500/90 px-5 py-3.5 rounded-3xl rounded-bl-none">
+                        <div class="flex items-center gap-x-2 mb-1">
+                            <i class="fa-solid fa-robot text-white/90"></i>
+                            <span class="font-semibold text-white">Grok</span>
+                        </div>
+                        <div class="text-white">Hello, space explorer! I'm Grok. Ask me anything about the universe — black holes, exoplanets, the meaning of life... I've got answers (and jokes).</div>
+                    </div>
+                </div>
+            `;
+
+            // Randomly increment chat count for fun
+            setInterval(() => {
+                const countEl = document.getElementById('chat-count');
+                countEl.innerText = parseInt(countEl.innerText) + Math.floor(Math.random() * 3) + 1;
+            }, 45000);
+
+            // Easter egg: Konami code for extra stars
+            let keys = [];
+            document.addEventListener('keydown', (e) => {
+                keys.push(e.key);
+                if (keys.length > 10) keys.shift();
+                if (keys.join('').includes('ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba')) {
+                    const canvas = document.getElementById('starfield');
+                    canvas.style.boxShadow = '0 0 120px #67e8f9';
+                    setTimeout(() => canvas.style.boxShadow = 'none', 1200);
+                    keys = [];
+                }
+            });
+
+            console.log('%c[Grok] Impossible Universe initialized. You are now a GitHub legend.', 'color:#67e8f9');
+        }
+
+        // Boot the app
+        window.onload = initializeApp;
+    </script>
+</body>
+</html>
